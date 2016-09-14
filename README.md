@@ -32,7 +32,7 @@ Extend from https://github.com/akiran/react-slick
 ### Installation
 
 ```bash
-npm install react-slick
+npm install react-slick-carousel
 ```
 
 Also install slick-carousel for css and font
@@ -168,7 +168,7 @@ If you have flex property on container div of slider, add below css
 Want to run demos locally
 
 ```shell
-git clone https://github.com/akiran/react-slick
+git clone https://github.com/phattranky/react-slick-carousel
 npm install
 npm start
 open http://localhost:8000
