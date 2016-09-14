@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import Slider from '../src/slider'
 
 export default class CenterModeWithFiniteCustomLeft extends Component {
-  handleCustomTagetSlideLeft(targetLeft, currentSlide, targetSlide) {
-    return (targetLeft + 100);
+  handleCustomTagetSlideLeft(slide) {
+    return (slide.targetLeft + 100);
   }
 
-  handleCustomCurrentSlideLeft(currentLeft) {
-    return (currentLeft + 100);
+  handleCustomCurrentSlideLeft(slide) {
+    return (slide.currentLeft + 100);
   }
 
-  onInitTargetLeft(targetLeft, slideCount, slideWidth, trackWidth) {
+  onInitTargetLeft(slide) {
     return 0;
   }
 

@@ -42,7 +42,7 @@ var helpers = {
       // getCSS function needs previously set state
 
       if (this.props.onInitTargetLeft) {
-        targetLeft = this.props.onInitTargetLeft(targetLeft, slideCount, slideWidth, trackWidth);
+        targetLeft = this.props.onInitTargetLeft({targetLeft, slideCount, slideWidth, trackWidth, listWidth, listHeight});
       }
       var trackStyle = getTrackCSS(assign({left: targetLeft}, props, this.state));
 
@@ -230,7 +230,7 @@ var helpers = {
     if (this.props.useCSS === false) {
 
       if(this.props.customCurrentSlideLeft) {
-        currentLeft = this.props.customCurrentSlideLeft(currentLeft, currentSlide, targetSlide);
+        currentLeft = this.props.customCurrentSlideLeft({currentLeft, currentSlide, targetLeft, targetSlide});
       }
 
       this.setState({
@@ -245,7 +245,7 @@ var helpers = {
     } else {
 
       if(this.props.customCurrentSlideLeft) {
-        currentLeft = this.props.customCurrentSlideLeft(currentLeft, currentSlide, targetSlide);
+        currentLeft = this.props.customCurrentSlideLeft({currentLeft, currentSlide, targetLeft, targetSlide});
       }
 
       var nextStateChanges = {
@@ -264,7 +264,7 @@ var helpers = {
       };
 
       if(this.props.customTargetSlideLeft) {
-        targetLeft = this.props.customTargetSlideLeft(targetLeft, currentSlide, targetSlide);
+        targetLeft = this.props.customTargetSlideLeft({currentLeft, currentSlide, targetLeft, targetSlide});
       }
 
       this.setState({
