@@ -1124,8 +1124,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // getCSS function needs previously set state
 
 	      if (this.props.onInitTargetLeft) {
-	        targetLeft = this.props.onInitTargetLeft(targetLeft, slideCount, slideWidth, trackWidth);
+	        console.warn('[onInitTargetLeft] deprecated from version 0.14.8. Use onTransformInitTargetLeft instead');
+	        targetLeft = this.props.onInitTargetLeft({ targetLeft: targetLeft, slideCount: slideCount, slideWidth: slideWidth, trackWidth: trackWidth, listWidth: listWidth, listHeight: listHeight });
 	      }
+
+	      if (this.props.onTransformInitTargetLeft) {
+	        targetLeft = this.props.onTransformInitTargetLeft({ targetLeft: targetLeft, slideCount: slideCount, slideWidth: slideWidth, trackWidth: trackWidth, listWidth: listWidth, listHeight: listHeight });
+	      }
+
 	      var trackStyle = (0, _trackHelper.getTrackCSS)((0, _objectAssign2.default)({ left: targetLeft }, props, this.state));
 
 	      this.setState({ trackStyle: trackStyle });
@@ -1167,6 +1173,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        slideIndex: this.state.currentSlide,
 	        trackRef: this.track
 	      }, props, this.state));
+
+	      if (this.props.onTransformUpdateTargetLeft) {
+	        targetLeft = this.props.onTransformUpdateTargetLeft({ targetLeft: targetLeft, slideCount: slideCount, slideWidth: slideWidth, trackWidth: trackWidth, listWidth: listWidth, listHeight: listHeight });
+	      }
+
 	      // getCSS function needs previously set state
 	      var trackStyle = (0, _trackHelper.getTrackCSS)((0, _objectAssign2.default)({ left: targetLeft }, props, this.state));
 
@@ -1313,7 +1324,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.props.useCSS === false) {
 
 	      if (this.props.customCurrentSlideLeft) {
-	        currentLeft = this.props.customCurrentSlideLeft(currentLeft, currentSlide, targetSlide);
+	        console.warn('[customCurrentSlideLeft] deprecated from version 0.14.8. Use onTransformCurrentLeft instead');
+	        currentLeft = this.props.customCurrentSlideLeft({ currentLeft: currentLeft, currentSlide: currentSlide, targetLeft: targetLeft, targetSlide: targetSlide });
+	      }
+
+	      if (this.props.onTransformCurrentLeft) {
+	        currentLeft = this.props.onTransformCurrentLeft({ currentLeft: currentLeft, currentSlide: currentSlide, targetLeft: targetLeft, targetSlide: targetSlide });
 	      }
 
 	      this.setState({
@@ -1327,7 +1343,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else {
 
 	      if (this.props.customCurrentSlideLeft) {
-	        currentLeft = this.props.customCurrentSlideLeft(currentLeft, currentSlide, targetSlide);
+	        console.warn('[customCurrentSlideLeft] deprecated from version 0.14.8. Use onTransformCurrentLeft instead');
+	        currentLeft = this.props.customCurrentSlideLeft({ currentLeft: currentLeft, currentSlide: currentSlide, targetLeft: targetLeft, targetSlide: targetSlide });
+	      }
+
+	      if (this.props.onTransformCurrentLeft) {
+	        currentLeft = this.props.onTransformCurrentLeft({ currentLeft: currentLeft, currentSlide: currentSlide, targetLeft: targetLeft, targetSlide: targetSlide });
 	      }
 
 	      var nextStateChanges = {
@@ -1346,7 +1367,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 
 	      if (this.props.customTargetSlideLeft) {
-	        targetLeft = this.props.customTargetSlideLeft(targetLeft, currentSlide, targetSlide);
+	        console.warn('[customTargetSlideLeft] deprecated from version 0.14.8. Use onTransformTargetLeft instead');
+	        targetLeft = this.props.customTargetSlideLeft({ currentLeft: currentLeft, currentSlide: currentSlide, targetLeft: targetLeft, targetSlide: targetSlide });
+	      }
+
+	      if (this.props.onTransformTargetLeft) {
+	        targetLeft = this.props.onTransformTargetLeft({ currentLeft: currentLeft, currentSlide: currentSlide, targetLeft: targetLeft, targetSlide: targetSlide });
 	      }
 
 	      this.setState({
@@ -1527,6 +1553,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    customTargetSlideLeft: null,
 	    customCurrentSlideLeft: null,
 	    onInitTargetLeft: null,
+	    onTransformTargetLeft: null,
+	    onTransformCurrentLeft: null,
+	    onTransformInitTargetLeft: null,
 	    edgeEvent: null,
 	    init: null,
 	    swipeEvent: null,

@@ -92,6 +92,11 @@ var helpers = {
         slideIndex: this.state.currentSlide,
         trackRef: this.track
       }, props, this.state));
+
+      if(this.props.onTransformUpdateTargetLeft) {
+        targetLeft = this.props.onTransformUpdateTargetLeft({targetLeft, slideCount, slideWidth, trackWidth, listWidth, listHeight});
+      }
+
       // getCSS function needs previously set state
       var trackStyle = getTrackCSS(assign({left: targetLeft}, props, this.state));
 
