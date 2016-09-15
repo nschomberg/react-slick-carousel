@@ -42,8 +42,14 @@ var helpers = {
       // getCSS function needs previously set state
 
       if (this.props.onInitTargetLeft) {
+        console.warn('[onInitTargetLeft] deprecated from version 0.14.8. Use onTransformInitTargetLeft instead');
         targetLeft = this.props.onInitTargetLeft({targetLeft, slideCount, slideWidth, trackWidth, listWidth, listHeight});
       }
+
+      if(this.props.onTransformInitTargetLeft) {
+        targetLeft = this.props.onTransformInitTargetLeft({targetLeft, slideCount, slideWidth, trackWidth, listWidth, listHeight});
+      }
+
       var trackStyle = getTrackCSS(assign({left: targetLeft}, props, this.state));
 
       this.setState({trackStyle: trackStyle});
@@ -125,7 +131,7 @@ var helpers = {
       if(this.props.infinite === false &&
         (index < 0 || index >= this.state.slideCount)) {
         return;
-      } 
+      }
 
       //  Shifting targetSlide back into the range
       if (index < 0) {
@@ -230,7 +236,12 @@ var helpers = {
     if (this.props.useCSS === false) {
 
       if(this.props.customCurrentSlideLeft) {
+        console.warn('[customCurrentSlideLeft] deprecated from version 0.14.8. Use onTransformCurrentLeft instead');
         currentLeft = this.props.customCurrentSlideLeft({currentLeft, currentSlide, targetLeft, targetSlide});
+      }
+
+      if(this.props.onTransformCurrentLeft) {
+        currentLeft = this.props.onTransformCurrentLeft({currentLeft, currentSlide, targetLeft, targetSlide});
       }
 
       this.setState({
@@ -245,7 +256,12 @@ var helpers = {
     } else {
 
       if(this.props.customCurrentSlideLeft) {
+        console.warn('[customCurrentSlideLeft] deprecated from version 0.14.8. Use onTransformCurrentLeft instead');
         currentLeft = this.props.customCurrentSlideLeft({currentLeft, currentSlide, targetLeft, targetSlide});
+      }
+
+      if(this.props.onTransformCurrentLeft) {
+        currentLeft = this.props.onTransformCurrentLeft({currentLeft, currentSlide, targetLeft, targetSlide});
       }
 
       var nextStateChanges = {
@@ -264,7 +280,12 @@ var helpers = {
       };
 
       if(this.props.customTargetSlideLeft) {
+        console.warn('[customTargetSlideLeft] deprecated from version 0.14.8. Use onTransformTargetLeft instead');
         targetLeft = this.props.customTargetSlideLeft({currentLeft, currentSlide, targetLeft, targetSlide});
+      }
+
+      if(this.props.onTransformTargetLeft) {
+        targetLeft = this.props.onTransformTargetLeft({currentLeft, currentSlide, targetLeft, targetSlide});
       }
 
       this.setState({
