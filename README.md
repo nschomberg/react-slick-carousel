@@ -7,6 +7,7 @@ Carousel component built with React. It is a react port of [slick carousel](http
 
 Extend from https://github.com/akiran/react-slick
 ### Additionals
+* onTransformUpdateTargetLeft: control target slide left when change list slide
 * onInitTargetLeft (deprecated from 0.14.8) replaced by onTransformInitTargetLeft for control target slide left on init
 ```
   onInitTargetLeft(slide) {
