@@ -21,16 +21,16 @@ export default class CenterModeWithFiniteCustomLeft extends Component {
       infinite: false,
       centerPadding: 0,
       variableWidth: true,
-      onInitTargetLeft: this.onInitTargetLeft,
-      customTargetSlideLeft: this.handleCustomTagetSlideLeft,
-      customCurrentSlideLeft: this.handleCustomCurrentSlideLeft,
+      onTransformInitTargetLeft: this.onInitTargetLeft,
+      onTransformTargetLeft: this.handleCustomTagetSlideLeft,
+      onTransformCurrentLeft: this.handleCustomCurrentSlideLeft,
       speed: 500
     };
     return (
       <div>
         <h2>Center Mode (finite) - Custom Slide Left - Move left 100 each step</h2>
         <div style={{width: 520}}>
-        
+
           <Slider {...settings}>
             <div style={{width: 240}}><h3>1</h3></div>
             <div style={{width: 240}}><h3>2</h3></div>

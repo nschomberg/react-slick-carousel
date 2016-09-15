@@ -7,21 +7,21 @@ Carousel component built with React. It is a react port of [slick carousel](http
 
 Extend from https://github.com/akiran/react-slick
 ### Additionals
-* onInitTargetLeft for control target slide left on init
+* onInitTargetLeft (deprecated from 0.14.8) replaced by onTransformInitTargetLeft for control target slide left on init
 ```
   onInitTargetLeft(slide) {
     // slide: {targetLeft, slideCount, slideWidth, trackWidth, listWidth, listHeight}
     return (slide.targetLeft + 100);
   }
 ```
-* customTargetSlideLeft for control target slide left offset
+* customTargetSlideLeft (deprecated from 0.14.8) replaced by onTransformTargetLeft for control target slide left on change
 ```
   handleCustomTagetSlideLeft(slide) {
     // slide: {currentLeft, currentSlide, targetLeft, targetSlide}
     return (slide.targetLeft + 100);
   }
 ```
-* customCurrentSlideLeft: same as target but for current slide
+* customCurrentSlideLeft (deprecated from 0.14.8) replaced by onTransformTargetLeft: same as target but for current slide
 
 ### Important
 ### Breaking changes in react-slick@0.15
@@ -147,7 +147,7 @@ as the values of nextArrow and prevArrow.
 ```js
 class LeftNavButton extends React.Component {
   render() {
-    return <button {...this.props}>Next</button>  
+    return <button {...this.props}>Next</button>
   }
 }
 ```
@@ -155,9 +155,9 @@ class LeftNavButton extends React.Component {
 Important: be sure that you pass your component's props to your clickable element
 like the example above. If you don't, your custom component won't trigger the click handler.
 
-You can also set onClick={this.props.onClick} if you only want to set the click handler. 
+You can also set onClick={this.props.onClick} if you only want to set the click handler.
 
-### Flexbox support 
+### Flexbox support
 If you have flex property on container div of slider, add below css
 ```
 * {
